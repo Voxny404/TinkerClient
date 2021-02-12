@@ -1,28 +1,31 @@
-let userName = "Tosy";
-let rooms = "test";
-const socket = io(apiCon) //onlineCeck
+/*jshint esversion: 6 */
+
+let userName = 'Tosy';
+let rooms = 'test';
+const socket = io(apiCon); //onlineCeck
 
 //activates chat
-function startChat(){
+function startChat() {
 
-  const roomName = document.getElementById('roomName'),
-        usersName = document.getElementById('usersName'),
-        theActualUser = document.getElementById('theActualUser');
+  const roomName = document.getElementById('roomName');
+  const usersName = document.getElementById('usersName');
+  const theActualUser = document.getElementById('theActualUser');
 
   //display user name
-  theActualUser.innerText = "User : "+userName;
+  theActualUser.innerText = 'User : ' + userName;
 
   //join chat room
-  socket.emit('joinRoom', { userName,rooms } )
+  socket.emit('joinRoom', { userName, rooms });
 
   //get room and users
-  socket.on('roomUsers',( {room, users} ) => {
-    outputRoomName( room );
-    outputUsers( users );
-  })
+  socket.on('roomUsers', ({ room, users }) => {
+    outputRoomName(room);
+    outputUsers(users);
+  });
+
   //handels connection error
-  socket.on('connect_error', function() {
-    setTimeout(()=> {location.reload();},5000)
-  })
+  socket.on('connect_error', function () {
+    setTimeout(()=> {location.reload();}, 5000);
+  });
 
 }

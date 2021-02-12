@@ -5,7 +5,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 1000,
     Height:720,
-    
+
     titleBarStyle: 'customButtonsOnHover',
     frame: true,
     transparent: false,

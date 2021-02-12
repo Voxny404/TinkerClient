@@ -1,4 +1,6 @@
+/*jshint esversion: 6 */
+
 //add room name to dom
-function outputRoomName(room){
-  roomName.innerText = 'You are in room '+'\n'+room;
+function outputRoomName(room) {
+  roomName.innerText = 'You are in room ' + '\n' + room;
 }

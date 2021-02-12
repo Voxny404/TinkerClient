@@ -1,10 +1,12 @@
-let roomChangerForm = document.getElementById('roomChangerForm'),
-    chatForm = document.getElementById('chat-form');
+/*jshint esversion: 6 */
+const roomChangerForm = document.getElementById('roomChangerForm');
+const chatForm = document.getElementById('chat-form');
+
 //relocades the user to login
-roomChangerForm.addEventListener('submit', e =>{
+roomChangerForm.addEventListener('submit', e => {
   e.preventDefault();
   location.reload();
-})
+});
 
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -13,10 +15,10 @@ chatForm.addEventListener('submit', e => {
   const msg = document.getElementById('msg');
 
   //message and name to server
-  socket.emit('chatMessage', msg.value)
+  socket.emit('chatMessage', msg.value);
   msg.value = '';
   msg.focus();
-})
+});
 
 //lisetens for enter key
 chatForm.addEventListener('keydown', e => {
@@ -25,20 +27,18 @@ chatForm.addEventListener('keydown', e => {
 
   // 13 represents the Enter key
   if (keyCode === 13 && !e.shiftKey) {
-      // Don't generate a new line
-      e.preventDefault();
+    // Don't generate a new line
+    e.preventDefault();
 
-      const msg = document.getElementById('msg');
+    const msg = document.getElementById('msg');
 
-      if(!msg){
-
-      } else {
-        if(msg.value){
-          //message and name to server
-          socket.emit('chatMessage', msg.value)
-          msg.value = '';
-          msg.focus();
-        }
+    if (msg) {
+      if (msg.value) {
+        //message and name to server
+        socket.emit('chatMessage', msg.value);
+        msg.value = '';
+        msg.focus();
       }
+    }
   }
 });
