@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-function myFunction() {
+function displayFunction() {
 
   const x = document.getElementById('myLinks');
   const chatBox1 = document.getElementById('chatBox1');

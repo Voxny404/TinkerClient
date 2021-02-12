@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 const apiCon = 'https://apitink.herokuapp.com'; //socks.js
 
-function onlineCeck() {
+function onlineCheck() {
   const https = require('https');
   return new Promise((resolve, rej) => {
     https.get(apiCon + `/` + 'status', res => {
@@ -10,7 +10,6 @@ function onlineCeck() {
       res.on('data', chunk => { data += chunk; });
       res.on('end', () => {
         if (data) {
-          join();
           resolve();
         } else {
           console.log('invalid response!!!');
@@ -27,7 +26,7 @@ function onlineCeck() {
         setTimeout(()=> {
             loadingText.innerText = "Why don't you order a sandwich?";
             setTimeout(()=> {
-              onlineCeck();
+              onlineCheck();
               loadingText.innerText = '';
             }, 10000);
           }, 10000);

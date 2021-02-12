@@ -4,11 +4,18 @@ function loader() {
 
   loadingText.innerText = '';
   setTimeout(function () {
-
-    //do some conection testing here
     loadingText.innerText = 'The bits are breeding';
-    setTimeout(() => {
-      onlineCeck();
+    setTimeout(function () {
+      //checks if api is up
+      onlineCheck()
+      .then(function () {
+        //enter login form
+        return joinLoginForm();
+      })
+      .then(() => {
+        //start socket
+        startChat();
+      });
     }, 2000);
 
   }, 4000);
