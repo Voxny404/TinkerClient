@@ -19,8 +19,8 @@ function startChat() {
 
   //get room and users
   socket.on('roomUsers', ({ room, users }) => {
-    outputRoomName(room);
-    outputUsers(users);
+    new UserManager(users, room);
+
   });
 
   //handels connection error
